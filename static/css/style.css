@@ -124,6 +124,11 @@
   margin: .375rem;
 }
 
+
+/* stefan's modifications */
+
+/* remove border on image + center captions */
+
 img,
 video {
   max-width: 65%;
@@ -139,4 +144,33 @@ video {
 img + em {
   display: block;
   text-align: center;;
+}
+
+/* content preview */
+
+.content-preview {
+  color: var(--text-muted, #666);
+  font-size: 0.9em;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.content-list {
+  list-style: none;
+  padding: 0;
+}
+
+.content-list li {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border, #eee);
+}
+
+.content-list li:last-child {
+  border-bottom: none;
+}
+
+.content-link {
+  font-weight: 600;
+  font-size: 1.1em;
 }
