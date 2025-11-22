@@ -149,7 +149,6 @@ img + em {
 /* content preview */
 
 .content-preview {
-  color: var(--text-muted, #666);
   font-size: 0.9em;
   margin-top: 0.25rem;
   line-height: 1.4;
@@ -173,4 +172,18 @@ img + em {
 .content-link {
   font-weight: 600;
   font-size: 1.1em;
+}
+
+:root,
+::backdrop {
+  /* set sans-serif & mono fonts */
+  --sans-font: "Manrope", "Avenir Next", Avenir, "Open Sans", -apple-system, BlinkMacSystemFont,
+    "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
+    "Helvetica Neue", sans-serif;
+  --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+
+}
+
+html {
+  font-family: var(--sans-font);
 }

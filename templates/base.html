@@ -9,6 +9,10 @@
         {% endblock %}
         <title>{{ config.title }}{% if page.title %} | {{ page.title }}{% endif %}</title>
 
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
         <link rel="preload" href="{{ get_url(path='css/style.css') }}" as="style">
         <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
         <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
