@@ -5,4 +5,17 @@
     <a href="{{ page.permalink }}" class="content-link">
         {{ page.title }}
     </a>
+    {% if page.summary %}
+    <div class="content-preview">
+        {{ page.summary | safe | truncate(length=300) }}
+    </div>
+    {% elif page.description %}
+    <div class="content-preview">
+        {{ page.description | safe | truncate(length=300) }}
+    </div>
+    {% else %}
+    <div class="content-preview">
+        {{ page.content | safe | striptags | truncate(length=300) }}
+    </div>
+    {% endif %}
 </li>
