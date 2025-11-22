@@ -123,3 +123,20 @@
 .webring {
   margin: .375rem;
 }
+
+img,
+video {
+  max-width: 65%;
+  align-self: center;
+  height: auto;
+  padding: .125rem;
+  border: none;
+  border-radius: 15px;
+  display: block;
+  margin: 0 auto;
+}
+
+img + em {
+  display: block;
+  text-align: center;;
+}
