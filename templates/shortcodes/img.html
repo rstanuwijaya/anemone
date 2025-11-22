@@ -1,4 +1,28 @@
-<div {% if class %}class="{{class}}"{% endif %}>
+{# templates/shortcodes/image.html #}
+{% set src = id | default(value="") %}
+
+{% if src == "" %}
+    {% set src = "" %}
+{% elif src is starting_with("http://") or src is starting_with("https://") %}
+    {# leave absolute URLs as-is #}
+{% else %}
+    {% set normalized = src | trim_start_matches(pat="/") %}
+    {% set src = config.extra.asset_base_url ~ "/" ~ normalized %}
+{% endif %}
+
+<div {% if class %}class="{{ class }} haha"{% endif %}>
+  <img
+    src="{{ src }}"
+    {% if alt %}alt="{{ alt }}"{% endif %}
+    loading="{{ loading | default(value="lazy") }}"
+  >
+  {% if caption %}
+    <div class="caption">{{ caption }}</div>
+  {% endif %}
+</div>
+
+
+<!-- <div {% if class %}class="{{class}}"{% endif %}>
   <img src="{{id}}" {% if alt %}alt="{{alt}}"{% endif %}>
   {% if caption %}<div class="caption">{{caption}}</div>{% endif %}
-</div>
+</div> -->
