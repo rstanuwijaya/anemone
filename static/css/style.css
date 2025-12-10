@@ -198,46 +198,41 @@ html {
   font-family: var(--sans-font);
 }
 
-/* */
+/* font size on mobile */
 @media only screen and (max-width: 720px) {
-  h1 {
-      font-size:1.5rem
-  }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3, h4, h5, h6 { font-size: 1rem; }
 
-  h2 {
-      font-size: 1.25rem
-  }
-
-  h3 {
-      font-size: 1rem
-  }
-
-  h4 {
-      font-size: 1rem
-  }
-
-  h5 {
-      font-size: 1rem
-  }
-
-  h6 {
-      font-size: 1rem
-  }
-
-  aside {
-      width: 100%;
-      float: none;
-      margin-inline-start:0}
-
-  input,select,textarea {
-      width: 100%
-  }
-
-  dialog {
-      max-width: 100%;
-      margin: auto 1em
-  }
+  aside, input, select, textarea { width: 100%; }
+  
+  aside { float: none; margin-inline-start: 0; }
+  
+  dialog { max-width: 100%; margin: auto 1em; }
 }
+
+/* color */
+
+@media (prefers-color-scheme: dark) {
+    img,video {
+        opacity: 0.9;
+    }
+}
+
+[data-theme=dark] {
+  color-scheme: dark;
+  --bg: #222529;
+  --bg-light: #464949;
+  --text: #D6D6D6;
+  --text-light: #DBD5BC;
+
+  --accent: #79b2c4;
+  --accent-light: #87C9E5;
+  --accent-text: var(--bg);
+  --border: #DBD5BC;
+  --link: #E2AEA2;
+}
+
 
 /* lightbox */
 #lightbox {
