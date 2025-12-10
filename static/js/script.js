@@ -64,10 +64,51 @@ class ThemeManager {
     }
 }
 
+class LightboxManager {
+    constructor() {
+        this.lightbox = document.getElementById('lightbox');
+        this.lightboxImg = document.getElementById('lightbox-img');
+
+        if (!this.lightbox || !this.lightboxImg) return;
+
+        this.init();
+    }
+
+    init() {
+        this.attachTriggerListeners();
+        this.registerCloseHandler();
+    }
+
+    attachTriggerListeners() {
+        document.querySelectorAll('.lightbox-trigger').forEach((img) => {
+            img.addEventListener('click', (event) => {
+                this.open(event.target.src);
+            });
+        });
+    }
+
+    registerCloseHandler() {
+        this.lightbox.addEventListener('click', () => this.close());
+    }
+
+    open(src) {
+        this.lightboxImg.src = src;
+        this.lightbox.style.display = 'flex';
+    }
+
+    close() {
+        this.lightbox.style.display = 'none';
+        this.lightboxImg.removeAttribute('src');
+    }
+}
 
 // Initialize when content is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new ThemeManager());
+    document.addEventListener('DOMContentLoaded', () => {
+        new ThemeManager();
+        new LightboxManager();
+    });
 } else {
     new ThemeManager();
+    new LightboxManager();
 }

@@ -20,8 +20,9 @@
 {% endif %}
 
 <img
+    class="lightbox-trigger"
     src="{{ final_src }}"
     alt="{{ alt | default(value='') }}"
     {% if class %}class="{{ class }}"{% endif %}
     loading="lazy"
-/>
+/> 
