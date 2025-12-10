@@ -198,6 +198,48 @@ html {
   font-family: var(--sans-font);
 }
 
+/* */
+@media only screen and (max-width: 720px) {
+  h1 {
+      font-size:1.5rem
+  }
+
+  h2 {
+      font-size: 1.25rem
+  }
+
+  h3 {
+      font-size: 1rem
+  }
+
+  h4 {
+      font-size: 1rem
+  }
+
+  h5 {
+      font-size: 1rem
+  }
+
+  h6 {
+      font-size: 1rem
+  }
+
+  aside {
+      width: 100%;
+      float: none;
+      margin-inline-start:0}
+
+  input,select,textarea {
+      width: 100%
+  }
+
+  dialog {
+      max-width: 100%;
+      margin: auto 1em
+  }
+}
+
+/* lightbox */
 #lightbox {
   display: none;
   position: fixed;
