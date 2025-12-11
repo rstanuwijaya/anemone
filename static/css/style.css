@@ -176,26 +176,17 @@ img + em {
 
 /* changed font */
 
-@font-face {
-    font-family: "Manrope";
-    src: url("/fonts/Manrope.woff2") format("woff2");
-    font-display: swap;
-    font-weight: 100 700; /* adjust to the weights included in the file */
-    font-style: normal;
-}
-
 :root,
 ::backdrop {
-  /* set sans-serif & mono fonts */
-  --sans-font: "Manrope", "Avenir Next", Avenir, "Open Sans", -apple-system, BlinkMacSystemFont,
+  --sans-font: "Avenir Next", Avenir, "Open Sans", -apple-system, BlinkMacSystemFont,
     "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
     "Helvetica Neue", sans-serif;
   --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-
 }
 
 html {
   font-family: var(--sans-font);
+  font-size: 110%;
 }
 
 /* font size on mobile */
@@ -209,6 +200,10 @@ html {
   aside { float: none; margin-inline-start: 0; }
   
   dialog { max-width: 100%; margin: auto 1em; }
+  
+  html {
+    font-size: 100%;
+  }  
 }
 
 /* color */
@@ -226,7 +221,7 @@ html {
   --text: #D6D6D6;
   --text-light: #DBD5BC;
 
-  --accent: #79b2c4;
+  --accent: #3bc19e;
   --accent-light: #87C9E5;
   --accent-text: var(--bg);
   --border: #DBD5BC;
