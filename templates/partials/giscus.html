@@ -1,0 +1,42 @@
+{% set giscus = config.extra.giscus %}
+{% if giscus and giscus.repo and giscus.repo_id and giscus.category and giscus.category_id %}
+<div class="giscus"></div>
+<script>
+(function () {
+    const getInitialTheme = () => {
+        const htmlTheme = document.documentElement.getAttribute('data-theme');
+        if (htmlTheme === 'dark' || htmlTheme === 'light') {
+            return htmlTheme;
+        }
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark' || storedTheme === 'light') {
+            return storedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    console.log("theme");
+    console.log(getInitialTheme(), '{{giscus.repo}}');
+    
+    const giscusScript = document.createElement("script");
+    
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", "{{ giscus.repo | safe }}");
+    giscusScript.setAttribute("data-repo-id", "{{ giscus.repo_id }}");
+    giscusScript.setAttribute("data-category", "{{ giscus.category }}");
+    giscusScript.setAttribute("data-category-id", "{{ giscus.category_id }}");
+    giscusScript.setAttribute("data-mapping", "{{ giscus.mapping | default(value='pathname') }}");
+    giscusScript.setAttribute("data-strict", "{{ giscus.strict | default(value=0) }}");
+    giscusScript.setAttribute("data-reactions-enabled", "{{ giscus.reactions_enabled | default(value=1) }}");
+    giscusScript.setAttribute("data-emit-metadata", "{{ giscus.emit_metadata | default(value=0) }}");
+    giscusScript.setAttribute("data-input-position", "{{ giscus.input_position | default(value='bottom') }}");
+    giscusScript.setAttribute("data-lang", "{{ giscus.lang | default(value=page.lang | default(value=config.default_language)) }}");
+    giscusScript.setAttribute("data-loading", "lazy");
+    giscusScript.setAttribute("crossorigin", "anonymous");
+    giscusScript.async = true;
+    giscusScript.setAttribute("data-theme", getInitialTheme());
+    document.body.appendChild(giscusScript);
+})();
+</script>
+{% else %}
+<!-- Giscus configuration is incomplete. Please fill out the [giscus] table in config.toml -->
+{% endif %}

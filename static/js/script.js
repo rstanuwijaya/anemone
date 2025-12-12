@@ -25,7 +25,6 @@ class ThemeManager {
         const savedTheme = localStorage.getItem('theme');
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
-
         document.documentElement.setAttribute('data-theme', initialTheme);
         this.updateIcon(initialTheme === 'dark');
     }
@@ -37,6 +36,7 @@ class ThemeManager {
 
         document.documentElement.setAttribute('data-theme', newTheme);
         this.updateIcon(!isDark);
+        this.updateGiscus(newTheme);
         localStorage.setItem('theme', newTheme);
 
         // Lazy load sound only when needed
@@ -61,6 +61,16 @@ class ThemeManager {
             this.icon.setAttribute('href',
                 `${this.iconBase}${isDark ? this.iconDark : this.iconLight}`);
         }
+    }
+
+    updateGiscus(newTheme) {
+        const message = { setConfig: {theme: newTheme} };        
+        const sendGiscusTheme = theme =>
+            document.querySelector(".giscus iframe")
+                    ?.contentWindow
+                    ?.postMessage({ giscus: message }, "https://giscus.app");
+        
+        sendGiscusTheme(newTheme === "dark" ? "dark" : "light")
     }
 }
 

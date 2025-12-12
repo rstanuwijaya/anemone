@@ -55,9 +55,9 @@
     </footer>
     {% endif %}
 
-    <!-- Add Disqus comments -->
-    {% if page.extra.comments | default(value=false) %}
-        {% include "partials/disqus.html" %}
+    <!-- Add Giscus comments -->
+    {% if page.extra.comments | default(value=true) %}
+        {% include "partials/giscus.html" %}
     {% endif %}
 </article>
 {% endblock %}
