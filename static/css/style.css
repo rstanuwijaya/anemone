@@ -253,3 +253,7 @@ html {
 .lightbox-trigger {
   cursor: zoom-in;
 }
+
+body.lightbox-open {
+    overflow: hidden;
+}

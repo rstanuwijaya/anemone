@@ -94,11 +94,13 @@ class LightboxManager {
     open(src) {
         this.lightboxImg.src = src;
         this.lightbox.style.display = 'flex';
+        document.body.classList.add('lightbox-open');
     }
 
     close() {
         this.lightbox.style.display = 'none';
         this.lightboxImg.removeAttribute('src');
+        document.body.classList.remove('lightbox-open');
     }
 }
 
