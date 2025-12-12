@@ -114,13 +114,65 @@ class LightboxManager {
     }
 }
 
+class GiscusManager {
+    constructor() {
+        // We look for the container we created in HTML
+        this.container = document.getElementById('giscus-container');
+        
+        // If the container doesn't exist (e.g., on a page without comments), stop here
+        if (!this.container) return;
+
+        this.init();
+    }
+
+    init() {
+        const getInitialTheme = () => {
+            const htmlTheme = document.documentElement.getAttribute('data-theme');
+            if (htmlTheme === 'dark' || htmlTheme === 'light') {
+                return htmlTheme;
+            }
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme === 'dark' || storedTheme === 'light') {
+                return storedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+
+        const giscusScript = document.createElement("script");
+        const config = this.container.dataset;
+
+        giscusScript.src = "https://giscus.app/client.js";
+        
+        // We pull the values from the dataset (data-attributes)
+        giscusScript.setAttribute("data-repo", config.repo);
+        giscusScript.setAttribute("data-repo-id", config.repoId);
+        giscusScript.setAttribute("data-category", config.category);
+        giscusScript.setAttribute("data-category-id", config.categoryId);
+        giscusScript.setAttribute("data-mapping", config.mapping);
+        giscusScript.setAttribute("data-strict", config.strict);
+        giscusScript.setAttribute("data-reactions-enabled", config.reactionsEnabled);
+        giscusScript.setAttribute("data-emit-metadata", config.emitMetadata);
+        giscusScript.setAttribute("data-input-position", config.inputPosition);
+        giscusScript.setAttribute("data-lang", config.lang);
+        
+        giscusScript.setAttribute("data-loading", "lazy");
+        giscusScript.setAttribute("crossorigin", "anonymous");
+        giscusScript.async = true;
+        giscusScript.setAttribute("data-theme", getInitialTheme());
+
+        this.container.appendChild(giscusScript);
+    }
+}
+
 // Initialize when content is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         new ThemeManager();
         new LightboxManager();
+        new GiscusManager();
     });
 } else {
     new ThemeManager();
     new LightboxManager();
+    new GiscusManager();
 }
